@@ -1,0 +1,112 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+	"vcs": {
+		"enabled": false,
+		"clientKind": "git",
+		"useIgnoreFile": false
+	},
+	"files": {
+		"ignoreUnknown": false,
+		"ignore": [
+			"ios",
+			"android",
+			".expo",
+			"./global.css",
+			"./components/icon/index.jsx",
+			"./components/icon/custom/index.jsx"
+		]
+	},
+	"formatter": {
+		"enabled": true,
+		"indentStyle": "tab"
+	},
+	"organizeImports": {
+		"enabled": true
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"complexity": {
+				"noExcessiveCognitiveComplexity": "error",
+				"noUselessStringConcat": "error",
+				"noUselessUndefinedInitialization": "error",
+				"noVoid": "error",
+				"useDateNow": "error"
+			},
+			"correctness": {
+				"noConstantMathMinMaxClamp": "error",
+				"noUndeclaredVariables": "error",
+				"noUnusedFunctionParameters": "error",
+				"noUnusedImports": "error",
+				"noUnusedPrivateClassMembers": "error",
+				"noUnusedVariables": "error",
+				"useArrayLiterals": "error",
+				"useHookAtTopLevel": "error"
+			},
+			"nursery": {
+				"noDynamicNamespaceImportAccess": "error",
+				"noExportedImports": "error",
+				"noIrregularWhitespace": "error",
+				"noDuplicateElseIf": "error",
+				"noNestedTernary": "error",
+				"noSubstr": "error",
+				"noTemplateCurlyInString": "error",
+				"noUnknownTypeSelector": "error",
+				"noUselessEscapeInRegex": "error",
+				"noUselessStringRaw": "error",
+				"useAtIndex": "error",
+				"useCollapsedIf": "error",
+				"useComponentExportOnlyModules": "error",
+				"useConsistentCurlyBraces": "error",
+				"useTrimStartEnd": "error"
+			},
+			"performance": {
+				"noBarrelFile": "error",
+				"noReExportAll": "error",
+				"useTopLevelRegex": "error"
+			},
+			"style": {
+				"noImplicitBoolean": "error",
+				"noNamespaceImport": "error",
+				"noNegationElse": "error",
+				"noYodaExpression": "error",
+				"useBlockStatements": "error",
+				"useCollapsedElseIf": "error",
+				"useConsistentBuiltinInstantiation": "error",
+				"useConst": "error",
+				"useDefaultSwitchClause": "error",
+				"useExplicitLengthCheck": "error",
+				"useFragmentSyntax": "error",
+				"useShorthandAssign": "error",
+				"useSingleCaseStatement": "error",
+				"useThrowNewError": "error",
+				"useThrowOnlyError": "error"
+			},
+			"suspicious": {
+				"noConsole": "warn",
+				"noEmptyBlockStatements": "error",
+				"useAwait": "error",
+				"useErrorMessage": "error",
+				"useNumberToFixedDigitsArgument": "error"
+			}
+		}
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "double"
+		}
+	},
+	"json": {
+		"formatter": {
+			"enabled": true,
+			"trailingCommas": "none",
+			"indentStyle": "tab",
+			"indentWidth": 4,
+			"lineEnding": "lf"
+		},
+		"parser": {
+			"allowTrailingCommas": false
+		}
+	}
+}
