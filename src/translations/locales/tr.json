@@ -1,1 +1,8 @@
-{}
+{
+	"navigation": {
+		"home": "Anasayfa",
+		"recommendations": "Önerilenler",
+		"fridge": "Dolabım",
+		"settings": "Ayarlar"
+	}
+}
