@@ -1,6 +1,7 @@
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import MainNavigation from "./navigation/Main";
+import "./translations";
 import "../global.css";
 
 const App = () => {
