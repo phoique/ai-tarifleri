@@ -13,24 +13,19 @@ import { tabs } from "../constants/tab";
 const TabButton = React.memo(({ tab, isFocused, onPress }) => (
 	<Pressable className="flex-1 items-center justify-center" onPress={onPress}>
 		<View
-			className={classNames("p-2 rounded-xl", {
+			className={classNames("p-2 rounded-xl bg-transparent", {
 				"bg-green-50": isFocused,
-				"bg-transparent": !isFocused,
 			})}
 		>
 			<Icon
 				name={tab.icon}
 				size={24}
-				className={classNames({
-					"text-green-600": isFocused,
-					"text-gray-400": !isFocused,
-				})}
+				className={classNames("text-gray-400", { "text-green-600": isFocused })}
 			/>
 		</View>
 		<Text
-			className={classNames("text-xs mt-0.5", {
-				"text-green-600 font-medium": isFocused,
-				"text-gray-500": !isFocused,
+			className={classNames("text-xs mt-0.5 text-gray-500", {
+				"text-green-600 font-bold": isFocused,
 			})}
 		>
 			{tab.label}
@@ -71,7 +66,6 @@ const CustomTabBar = React.memo(({ state, navigation }) => {
 		>
 			{tabs.map((tab, index) => {
 				const isFocused = state.index === index;
-
 				return (
 					<TabButton
 						key={tab.name}
