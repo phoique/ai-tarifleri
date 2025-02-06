@@ -4,5 +4,33 @@
 		"recommendations": "Önerilenler",
 		"fridge": "Dolabım",
 		"settings": "Ayarlar"
+	},
+	"screen": {
+		"home": {
+			"title": "Yemek önerisi",
+			"mealTypeTitle": "Yemek türü",
+			"mealTitle": "Yemek türü",
+			"dietaryTitle": "Diyet türü",
+			"nutrientTitle": "Besin türü",
+			"type": {
+				"breakfast": "Kahvaltı",
+				"mainCourse": "Ana Yemek",
+				"appetizer": "Başlangıç",
+				"dinner": "Akşam Yemeği",
+				"dessert": "Tatlı",
+				"vegan": "Vegan",
+				"vegetarian": "Vejetaryen",
+				"glutenFree": "Glutensiz",
+				"lowCalorie": "Düşük Kalorili",
+				"protein": "Protein",
+				"carbohydrate": "Karbonhidrat",
+				"fat": "Yağ"
+			}
+		}
+	},
+	"form": {
+		"button": {
+			"recommend": "Öneri Al"
+		}
 	}
 }

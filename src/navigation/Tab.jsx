@@ -1,33 +1,31 @@
-import React, { useMemo, useCallback } from "react";
-import { Text, View, Platform, Pressable } from "react-native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import classNames from "classnames";
-import HomeScreen from "../screens/home/HomeScreen";
-import RecommendationsScreen from "../screens/recommendations/RecommendationsScreen";
-import MyFridgeScreen from "../screens/fridge/MyFridgeScreen";
-import SettingsScreen from "../screens/settings/SettingsScreen";
-import Icon from "../components/icon";
-import { tabs } from "../constants/tab";
+import React, { useMemo, useCallback } from 'react';
+import { Text, View, Platform, Pressable } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import classNames from 'classnames';
+import HomeScreen from '../screens/home/HomeScreen';
+import RecommendationsScreen from '../screens/recommendations/RecommendationsScreen';
+import MyFridgeScreen from '../screens/fridge/MyFridgeScreen';
+import SettingsScreen from '../screens/settings/SettingsScreen';
+import Icon from '../components/icon';
+import { tabs } from '../constants/tab';
 
 const TabButton = React.memo(({ tab, isFocused, onPress }) => (
-	<Pressable className="flex-1 items-center justify-center" onPress={onPress}>
+	<Pressable className='flex-1 items-center justify-center' onPress={onPress}>
 		<View
-			className={classNames("p-2 rounded-xl bg-transparent", {
-				"bg-green-50": isFocused,
-			})}
-		>
+			className={classNames('p-2 rounded-xl bg-transparent', {
+				'bg-green-50': isFocused,
+			})}>
 			<Icon
 				name={tab.icon}
 				size={24}
-				className={classNames("text-gray-400", { "text-green-600": isFocused })}
+				className={classNames('text-gray-400', { 'text-green-600': isFocused })}
 			/>
 		</View>
 		<Text
-			className={classNames("text-xs mt-0.5 text-gray-500", {
-				"text-green-600 font-bold": isFocused,
-			})}
-		>
+			className={classNames('text-xs mt-0.5 text-gray-500', {
+				'text-green-600 font-bold': isFocused,
+			})}>
 			{tab.label}
 		</Text>
 	</Pressable>
@@ -47,7 +45,7 @@ const CustomTabBar = React.memo(({ state, navigation }) => {
 	const handlePress = useCallback(
 		(tab, isFocused) => {
 			const event = navigation.emit({
-				type: "tabPress",
+				type: 'tabPress',
 				target: tab.name,
 				canPreventDefault: true,
 			});
@@ -61,9 +59,8 @@ const CustomTabBar = React.memo(({ state, navigation }) => {
 
 	return (
 		<View
-			className="flex-row bg-white border-t border-gray-100"
-			style={containerStyle}
-		>
+			className='flex-row bg-white border-t border-gray-100'
+			style={containerStyle}>
 			{tabs.map((tab, index) => {
 				const isFocused = state.index === index;
 				return (
@@ -86,15 +83,14 @@ const Tab = () => {
 			screenOptions={{
 				headerShown: false,
 			}}
-			tabBar={(props) => <CustomTabBar {...props} />}
-		>
-			<BottomTab.Screen name="home" component={HomeScreen} />
+			tabBar={(props) => <CustomTabBar {...props} />}>
+			<BottomTab.Screen name='home' component={HomeScreen} />
 			<BottomTab.Screen
-				name="recommendations"
+				name='recommendations'
 				component={RecommendationsScreen}
 			/>
-			<BottomTab.Screen name="fridge" component={MyFridgeScreen} />
-			<BottomTab.Screen name="settings" component={SettingsScreen} />
+			<BottomTab.Screen name='fridge' component={MyFridgeScreen} />
+			<BottomTab.Screen name='settings' component={SettingsScreen} />
 		</BottomTab.Navigator>
 	);
 };

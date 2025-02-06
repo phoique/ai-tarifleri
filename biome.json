@@ -56,7 +56,6 @@
 				"noUselessStringRaw": "error",
 				"useAtIndex": "error",
 				"useCollapsedIf": "error",
-				"useComponentExportOnlyModules": "error",
 				"useConsistentCurlyBraces": "error",
 				"useTrimStartEnd": "error"
 			},
@@ -93,7 +92,15 @@
 	},
 	"javascript": {
 		"formatter": {
-			"quoteStyle": "double"
+			"jsxQuoteStyle": "single",
+			"quoteProperties": "asNeeded",
+			"trailingCommas": "all",
+			"semicolons": "always",
+			"arrowParentheses": "always",
+			"bracketSameLine": true,
+			"quoteStyle": "single",
+			"attributePosition": "auto",
+			"bracketSpacing": true
 		}
 	},
 	"json": {

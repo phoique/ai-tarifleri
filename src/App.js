@@ -1,12 +1,12 @@
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
-import MainNavigation from "./navigation/Main";
-import "./translations";
-import "../global.css";
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import MainNavigation from './navigation/Main';
+import './translations';
+import '../global.css';
 
 const App = () => {
 	return (
-		<GestureHandlerRootView className="flex-1">
+		<GestureHandlerRootView className='flex-1'>
 			<SafeAreaProvider>
 				<MainNavigation />
 			</SafeAreaProvider>
