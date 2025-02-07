@@ -3,10 +3,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import classNames from 'classnames';
 
 const Container = ({ edges, children, isScrollable, className, header }) => {
+	const edge = edges || ['top'];
 	if (isScrollable) {
 		return (
 			<SafeAreaView
-				edges={edges}
+				edges={edge}
 				className={classNames('flex-1 bg-white px-4', [className])}>
 				{header}
 				<ScrollView showsVerticalScrollIndicator={false}>{children}</ScrollView>
@@ -16,7 +17,7 @@ const Container = ({ edges, children, isScrollable, className, header }) => {
 
 	return (
 		<SafeAreaView
-			edges={edges}
+			edges={edge}
 			className={classNames('flex-1 bg-white px-4', [className])}>
 			{header}
 			{children}

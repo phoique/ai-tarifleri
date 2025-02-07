@@ -3,48 +3,68 @@ import { useTranslation } from 'react-i18next';
 import { Formik } from 'formik';
 import Container from '../../components/Container';
 import Header from '../../components/Header';
-import MealTypeCard from './components/TypeCard';
-import { dietaryTypes, mealTypes, nutrientTypes } from '../../constants/food';
 import Button from '../../components/form/Button';
+import Input from '../../components/form/Input';
+import InputLabel from '../../components/form/InputLabel';
+import InputArea from '../../components/form/InputArea';
+import { foodCreateSchema } from '../../validations/food';
+import TypeGroup from './components/TypeGroup';
+import useFoodRecommendation from '../../hooks/useFoodRecommendation';
 
 const HomeScreen = () => {
 	const { t } = useTranslation();
+	const foodRecommendation = useFoodRecommendation();
 
 	return (
 		<Container
-			isScrollable={false}
+			isScrollable={true}
 			header={<Header title={t('screen.home.title')} />}>
 			<Formik
 				initialValues={{
-					mealType: null,
-					nutrientType: null,
-					dietaryType: null,
+					mealType: '',
+					nutrientType: '',
+					dietaryType: '',
+					allergy: '',
+					other: '',
+				}}
+				validationSchema={foodCreateSchema}
+				onSubmit={async (values) => {
+					const response =
+						await foodRecommendation.createFoodRecommendation(values);
+					console.log(response.choices?.[0]?.message?.content);
 				}}>
 				{(formik) => (
 					<View className='flex flex-1'>
 						<View className='flex flex-1 gap-4'>
-							<MealTypeCard
-								title={t('screen.home.mealTitle')}
-								types={mealTypes}
-								onChange={(value) => formik.setFieldValue('mealType', value)}
-								value={formik.values.mealType}
-							/>
-							<MealTypeCard
-								title={t('screen.home.dietaryTitle')}
-								types={dietaryTypes}
-								onChange={(value) => formik.setFieldValue('dietaryType', value)}
-								value={formik.values.dietaryType}
-							/>
-							<MealTypeCard
-								title={t('screen.home.nutrientTitle')}
-								types={nutrientTypes}
-								onChange={(value) =>
-									formik.setFieldValue('nutrientType', value)
-								}
-								value={formik.values.nutrientType}
-							/>
+							<TypeGroup />
+							<InputLabel title={t('form.allergy')}>
+								<Input
+									name='allergy'
+									placeholder={t('form.allergy')}
+									value={formik.values.allergy}
+									onChange={formik.setFieldValue}
+									onBlur={formik.handleBlur}
+									onFocus={formik.setFieldTouched}
+									error={formik.errors.allergy}
+								/>
+							</InputLabel>
+							<InputLabel title={t('form.otherInfo')}>
+								<InputArea
+									name='other'
+									placeholder={t('form.otherInfo')}
+									value={formik.values.other}
+									onChange={formik.setFieldValue}
+									onBlur={formik.handleBlur}
+									onFocus={formik.setFieldTouched}
+									error={formik.errors.other}
+								/>
+							</InputLabel>
 						</View>
-						<Button className='bg-blue-500 rounded-2xl'>
+						<Button
+							className='bg-blue-500 rounded-2xl mt-4'
+							isDisable={!formik.isValid && !!formik.submitCount}
+							onPress={formik.handleSubmit}
+							isLoading={foodRecommendation.isLoading}>
 							<View className='flex flex-1'>
 								<Text className='text-white text-center text-base font-bold'>
 									{t('form.button.recommend')}

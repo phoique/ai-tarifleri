@@ -1,38 +1,43 @@
-import { View } from 'react-native';
+import { FlatList, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import Container from '../../components/Container';
 import Header from '../../components/Header';
 import FoodCard from './components/FoodCard';
+import foodServices from '../../services/foodServices';
+import FoodCardSkeleton from './components/FoodCardSkeleton';
 
 const MyFridgeScreen = () => {
 	const { t } = useTranslation();
+
+	const getCategoriesQuery = foodServices.useGetCategoriesQuery();
+
+	if (getCategoriesQuery.isFetching) {
+		return (
+			<Container header={<Header title={t('screen.fridge.title')} />}>
+				<View className='flex gap-4'>
+					{Array.from({ length: 3 }).map((_, index) => (
+						<FoodCardSkeleton
+							key={`food-card-skeleton-${
+								// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+								index
+							}`}
+						/>
+					))}
+				</View>
+			</Container>
+		);
+	}
+
 	return (
-		<Container
-			isScrollable={true}
-			header={<Header title={t('screen.fridge.title')} />}>
+		<Container header={<Header title={t('screen.fridge.title')} />}>
 			<View className='flex gap-4'>
-				<FoodCard
-					category='Fruits'
-					foods={[
-						{
-							name: 'Banana',
-							isFoodAvailable: true,
-							image:
-								'https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg',
-						},
-						{
-							name: 'Apple',
-							isFoodAvailable: true,
-							image:
-								'https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg',
-						},
-						{
-							name: 'Orange',
-							isFoodAvailable: false,
-							image:
-								'https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg',
-						},
-					]}
+				<FlatList
+					data={getCategoriesQuery.data?.tags}
+					renderItem={({ item }) => (
+						<FoodCard key={item.id} category={item.name} foods={[]} />
+					)}
+					keyExtractor={(item) => item.id.toString()}
+					showsVerticalScrollIndicator={false}
 				/>
 			</View>
 		</Container>

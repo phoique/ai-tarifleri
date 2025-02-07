@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, FlatList, Image } from 'react-native';
 import Button from '../../../components/form/Button';
+import classNames from 'classnames';
 
 const FoodCard = ({ category, foods }) => {
 	const keyExtractor = React.useCallback(
@@ -13,11 +14,15 @@ const FoodCard = ({ category, foods }) => {
 			<Button className='px-0 py-0 pr-3'>
 				<View className='flex flex-col items-center'>
 					<Image
-						className={`w-24 h-24 rounded-2xl ${item.isFoodAvailable ? '' : 'opacity-40'}`}
+						className={classNames('w-24 h-24 rounded-2xl', {
+							'opacity-40': !item.isFoodAvailable,
+						})}
 						source={{ uri: item.image }}
 					/>
 					<Text
-						className={`text-sm mt-1 font-normal ${item.isFoodAvailable ? '' : 'text-gray-400'}`}>
+						className={classNames('text-sm mt-1 font-normal', {
+							'text-gray-400': !item.isFoodAvailable,
+						})}>
 						{item.name}
 					</Text>
 				</View>

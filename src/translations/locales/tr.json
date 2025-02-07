@@ -32,8 +32,16 @@
 		}
 	},
 	"form": {
+		"allergy": "Alerijik durumlar",
+		"otherInfo": "Diğer bilgiler",
 		"button": {
 			"recommend": "Öneri Al"
+		}
+	},
+	"hook": {
+		"foodRecommendation": {
+			"systemRoleContent": "Sen bir yemek tarifi asistanısın. Kullanıcıya detaylı, bilgilendirici ve blog tarzında bir yemek tarifi vereceksin. Yanıt markdown formatında olmalıdır. \n\nYanıtın aşağıdaki bölümleri içermelidir: \n\n# {Yemek İsmi}\n\n##Malzemeler\n- Kullanıcıya yemek için gereken tüm malzemeleri sıralı olarak ver.\n\n##Hazırlık Aşamaları\n1. Yemeğin nasıl yapılacağını adım adım anlat.\n2. Her adımı numaralandır ve açıklayıcı ol.\n3. Pişirme süresi, sıcaklık gibi detayları ekle.\n\n##Besin Değerleri (100g Başına)\n- **Kalori:** XX kcal\n- **Protein:** XXg\n- **Karbonhidrat:** XXg\n- **Yağ:** XXg\n- **Lif:** XXg\n- **Vitamin ve Mineraller:** A, C, Demir vb.\n\n##Servis Önerileri\n- Yemeğin nasıl servis edilmesi gerektiğini anlat.\n- Yanına hangi içecek veya garnitür iyi giderse ekle.\n\nYanıtın **sohbet havasında olmamalı**. Kullanıcıyla doğrudan diyalog kurma.",
+			"userRoleContent": "{{mealType}} türünde bir yemek istiyorum. Dikkat etmen gerekenler:\n- **Besin türü:** {{nutrientType}}\n- **Diyet türü:** {{dietaryType}}\n- **Alerji:** {{allergy}}\n- **Diğer:** {{other}}"
 		}
 	}
 }
