@@ -11,8 +11,9 @@ const HomeScreen = () => {
 	const { t } = useTranslation();
 
 	return (
-		<Container isScrollable={false}>
-			<Header title={t('screen.home.title')} />
+		<Container
+			isScrollable={false}
+			header={<Header title={t('screen.home.title')} />}>
 			<Formik
 				initialValues={{
 					mealType: null,

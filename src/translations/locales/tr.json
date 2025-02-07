@@ -26,6 +26,9 @@
 				"carbohydrate": "Karbonhidrat",
 				"fat": "Yağ"
 			}
+		},
+		"fridge": {
+			"title": "Dolabım"
 		}
 	},
 	"form": {
