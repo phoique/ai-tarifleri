@@ -15,13 +15,20 @@ const useFoodRecommendation = () => {
 						{
 							role: 'system',
 							content: t('hook.foodRecommendation.systemRoleContent'),
+							response_format: 'json',
 						},
 						{
 							role: 'user',
 							content: t('hook.foodRecommendation.userRoleContent', {
-								mealType: t(`screen.home.type.${values.mealType}`),
-								nutrientType: t(`screen.home.type.${values.nutrientType}`),
-								dietaryType: t(`screen.home.type.${values.dietaryType}`),
+								mealType: values.mealType
+									? t(`screen.home.type.${values.mealType}`)
+									: '',
+								nutrientType: values.nutrientType
+									? t(`screen.home.type.${values.nutrientType}`)
+									: '',
+								dietaryType: values.dietaryType
+									? t(`screen.home.type.${values.dietaryType}`)
+									: '',
 								allergy: values.allergy,
 								other: values.other,
 							}),

@@ -16,9 +16,9 @@ const Button = ({
 			onPress={onPress}
 			className={classNames('flex flex-row items-center rounded-xl p-3', {
 				[className]: className,
-				'opacity-50': isDisable,
+				'opacity-50': isDisable === true || isLoading === true,
 			})}>
-			{isLoading && <ActivityIndicator className='mr-2' />}
+			{isLoading && <ActivityIndicator className='mr-2 text-white' />}
 			{icon && !isLoading && (
 				<Icon
 					name={icon}

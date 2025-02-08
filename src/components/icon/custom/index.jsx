@@ -4,3 +4,8 @@ export { default as Home } from "./Home";
 export { default as Settings } from "./Settings";
 export { default as Back } from "./Back";
 export { default as Close } from "./Close";
+export { default as Description } from "./Description";
+export { default as Ingredient } from "./Ingredient";
+export { default as Calculate } from "./Calculate";
+export { default as Stairs } from "./Stairs";
+export { default as StepInto } from "./StepInto";

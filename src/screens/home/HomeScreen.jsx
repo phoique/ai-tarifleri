@@ -1,6 +1,7 @@
 import { View, Text } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { Formik } from 'formik';
+import { useNavigation } from '@react-navigation/native';
 import Container from '../../components/Container';
 import Header from '../../components/Header';
 import Button from '../../components/form/Button';
@@ -10,9 +11,11 @@ import InputArea from '../../components/form/InputArea';
 import { foodCreateSchema } from '../../validations/food';
 import TypeGroup from './components/TypeGroup';
 import useFoodRecommendation from '../../hooks/useFoodRecommendation';
+import { setFoodRecommendation } from '../../services/storage';
 
 const HomeScreen = () => {
 	const { t } = useTranslation();
+	const navigation = useNavigation();
 	const foodRecommendation = useFoodRecommendation();
 
 	return (
@@ -31,7 +34,12 @@ const HomeScreen = () => {
 				onSubmit={async (values) => {
 					const response =
 						await foodRecommendation.createFoodRecommendation(values);
-					console.log(response.choices?.[0]?.message?.content);
+
+					setFoodRecommendation(
+						response.id,
+						JSON.parse(response.choices?.[0]?.message?.content),
+					);
+					navigation.navigate('foodDetail', { food_id: response.id });
 				}}>
 				{(formik) => (
 					<View className='flex flex-1'>
