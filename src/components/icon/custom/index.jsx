@@ -9,3 +9,4 @@ export { default as Ingredient } from "./Ingredient";
 export { default as Calculate } from "./Calculate";
 export { default as Stairs } from "./Stairs";
 export { default as StepInto } from "./StepInto";
+export { default as Recommend } from "./Recommend";

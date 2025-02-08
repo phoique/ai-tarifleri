@@ -39,7 +39,7 @@ const HomeScreen = () => {
 						response.id,
 						JSON.parse(response.choices?.[0]?.message?.content),
 					);
-					navigation.navigate('foodDetail', { food_id: response.id });
+					navigation.navigate('foodDetail', { id: response.id });
 				}}>
 				{(formik) => (
 					<View className='flex flex-1'>

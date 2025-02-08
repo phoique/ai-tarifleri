@@ -29,6 +29,18 @@
 		},
 		"fridge": {
 			"title": "Dolabım"
+		},
+		"foodDetail": {
+			"foodSummary": "Yemek özeti",
+			"ingredients": "Malzemeler",
+			"preparation": "Yapım aşamaları",
+			"servingSuggestions": "Servis önerileri",
+			"nutritionalValue": "Besin değerleri (100g)",
+			"vitaminMinerals": "Vitamin ve Mineraller",
+			"calories": "Kalori",
+			"protein": "Protein",
+			"carbohydrate": "Karbonhidrat",
+			"fat": "Yağ"
 		}
 	},
 	"form": {
