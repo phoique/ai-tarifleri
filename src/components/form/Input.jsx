@@ -28,6 +28,12 @@ const Input = ({
 		}
 	};
 
+	const handleOnBlur = () => {
+		if (onBlur) {
+			onBlur(name);
+		}
+	};
+
 	if (!name) {
 		return null;
 	}
@@ -37,9 +43,9 @@ const Input = ({
 			<TextInput
 				className={classNames(
 					'rounded-lg border border-gray-400 px-4 py-2 font-normal text-black',
-					{ 'border-red-600': error },
+					{ 'border-red-600': error, [props.className]: props.className },
 				)}
-				onBlur={onBlur(name)}
+				onBlur={handleOnBlur}
 				secureTextEntry={secureTextEntry}
 				placeholder={placeholder}
 				value={value || ''}
@@ -49,7 +55,6 @@ const Input = ({
 				onFocus={handleFocus}
 				multiline={multiline}
 				numberOfLines={numberOfLines}
-				{...props}
 			/>
 			{error && (
 				<Text

@@ -41,11 +41,19 @@
 			"protein": "Protein",
 			"carbohydrate": "Karbonhidrat",
 			"fat": "Yağ"
+		},
+		"recommendations": {
+			"title": "Önerilenler",
+			"notFound": {
+				"title": "Sonuç Bulunamadı",
+				"description": "Aradığınız kriterlere uygun tarif bulunamadı."
+			}
 		}
 	},
 	"form": {
 		"allergy": "Alerijik durumlar",
 		"otherInfo": "Diğer bilgiler",
+		"search": "Arama yapın...",
 		"button": {
 			"recommend": "Öneri Al"
 		}

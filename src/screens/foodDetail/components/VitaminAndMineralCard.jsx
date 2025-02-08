@@ -16,7 +16,7 @@ const VitaminAndMineralCard = ({ vitaminAndMinerals }) => {
 							<View className='bg-purple-50 p-2 rounded-xl items-center justify-center mb-2'>
 								<Icon name='Vitamin' size={24} className='text-purple-600' />
 							</View>
-							<Text className='text-gray-700 font-medium text-sm'>
+							<Text className='text-gray-700 font-medium text-sm text-center'>
 								{nutrient}
 							</Text>
 						</View>

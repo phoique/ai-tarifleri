@@ -7,12 +7,13 @@ const storage = new MMKV({
 
 /**
  * @description get saved food recommendation from storage
- * @returns {object}
+ * @returns {Array}
  */
 export const getFoodRecommendations = () => {
 	const foodRecommendation = storage.getString('foodRecommendation');
 	if (foodRecommendation) {
-		return JSON.parse(foodRecommendation);
+		const parsed = JSON.parse(foodRecommendation);
+		return Object.values(parsed);
 	}
 	return {};
 };

@@ -11,3 +11,4 @@ export { default as Fat } from './Fat';
 export { default as Vitamin } from './Vitamin';
 export { default as Restaurant } from './Restaurant';
 export { default as Calories } from './Calories';
+export { default as Search } from './Search';

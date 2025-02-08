@@ -35,10 +35,10 @@ const HomeScreen = () => {
 					const response =
 						await foodRecommendation.createFoodRecommendation(values);
 
-					setFoodRecommendation(
-						response.id,
-						JSON.parse(response.choices?.[0]?.message?.content),
-					);
+					setFoodRecommendation(response.id, {
+						...JSON.parse(response.choices?.[0]?.message?.content),
+						id: response.id,
+					});
 					navigation.navigate('foodDetail', { id: response.id });
 				}}>
 				{(formik) => (
