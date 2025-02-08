@@ -1,12 +1,13 @@
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Container from '../../components/Container';
 import Header from '../../components/Header';
-import FoodInfoCard from './components/FoodInfoCard';
 import Icon from '../../components/icon';
-import NutritionCard from './components/NutritionCard';
 import { getFoodRecommendation } from '../../services/storage';
+import NutritionCard from './components/NutritionCard';
+import PreparationCard from './components/PreparationCard';
+import VitaminAndMineralCard from './components/VitaminAndMineralCard';
 
 const FoodDetailScreen = () => {
 	const { t } = useTranslation();
@@ -18,90 +19,36 @@ const FoodDetailScreen = () => {
 	}
 
 	const food = getFoodRecommendation(params?.params?.id);
+
 	return (
-		<Container
-			isScrollable={true}
-			header={<Header title={food.title} />}
-			edges={['top', 'bottom']}>
-			<View className='flex flex-1 gap-6'>
-				{/* Yemek açıklaması */}
-				<FoodInfoCard
-					icon='Description'
-					title={t('screen.foodDetail.foodSummary')}>
-					<Text className='text-gray-600 font-normal'>{food.description}</Text>
-				</FoodInfoCard>
-
-				{/* Malzemeler */}
-				<FoodInfoCard
-					icon='Ingredient'
-					title={t('screen.foodDetail.ingredients')}>
-					<View className='flex gap-4'>
-						{food.ingredients.map((ingredient) => (
-							<View className='flex flex-row items-center' key={ingredient}>
-								<Icon name='StepInto' size={24} className='text-black' />
-								<Text className='text-gray-600 font-normal'>{ingredient}</Text>
-							</View>
-						))}
-					</View>
-				</FoodInfoCard>
-
-				{/* Yapım aşaması */}
-				<FoodInfoCard icon='Stairs' title={t('screen.foodDetail.preparation')}>
-					<View className='flex gap-4'>
-						{food.preparation.map((step) => (
-							<View key={step} className='flex-row'>
-								<Text className='text-gray-600 font-normal'>{step}</Text>
-							</View>
-						))}
-					</View>
-				</FoodInfoCard>
-
-				{/* Servis Önerisi */}
-				<View className='bg-green-50 p-4 rounded-2xl'>
-					<FoodInfoCard
-						icon='Recommend'
-						title={t('screen.foodDetail.servingSuggestions')}>
-						<View className='flex-row'>
-							<Text className='text-gray-600 font-normal'>
-								{food.servingSuggestions}
+		<Container isScrollable={false} header={<Header title={food.title} />}>
+			<ScrollView className='flex-1' showsVerticalScrollIndicator={false}>
+				<View className='flex flex-1 gap-6 p-4'>
+					<View className='bg-white p-4 rounded-2xl shadow-sm'>
+						<View className='flex-row items-center gap-3 mb-3'>
+							<Icon name='Description' size={24} className='text-green-600' />
+							<Text className='text-lg font-bold text-gray-800'>
+								{t('screen.foodDetail.foodSummary')}
 							</Text>
 						</View>
-					</FoodInfoCard>
-				</View>
-
-				{/* Besin Değerleri */}
-				<FoodInfoCard
-					icon='Calculate'
-					title={t('screen.foodDetail.nutritionalValue')}>
-					<View>
-						<View className='flex flex-row flex-wrap gap-4'>
-							{['calories', 'protein', 'carbohydrate', 'fat'].map(
-								(nutrient) => (
-									<NutritionCard
-										key={nutrient}
-										title={t(`screen.foodDetail.${nutrient}`)}
-										value={food.nutritionalValues.per100g[nutrient]}
-										unit={nutrient === 'calories' ? 'kcal' : 'g'}
-									/>
-								),
-							)}
+						<Text className='text-gray-600 leading-6'>{food.description}</Text>
+					</View>
+					<NutritionCard nutritionalValues={food.nutritionalValues} />
+					<PreparationCard preparations={food.preparation} />
+					<View className='bg-green-50 p-4 rounded-2xl'>
+						<View className='flex-row items-center gap-3 mb-3'>
+							<Icon name='Restaurant' size={24} className='text-green-600' />
+							<Text className='text-lg font-bold text-gray-800'>
+								{t('screen.foodDetail.servingSuggestions')}
+							</Text>
 						</View>
+						<Text className='text-gray-700'>{food.servingSuggestions}</Text>
 					</View>
-				</FoodInfoCard>
-
-				{/* Vitamin ve Mineraller */}
-				<FoodInfoCard
-					icon='Description'
-					title={t('screen.foodDetail.vitaminMinerals')}>
-					<View className='flex flex-row flex-wrap gap-2'>
-						{food.nutritionalValues.vitaminAndMinerals.map((vitamin) => (
-							<View key={vitamin} className='bg-green-100 p-3 rounded-full'>
-								<Text className='text-green-800 font-normal'>{vitamin}</Text>
-							</View>
-						))}
-					</View>
-				</FoodInfoCard>
-			</View>
+					<VitaminAndMineralCard
+						vitaminAndMinerals={food.nutritionalValues.vitaminAndMinerals}
+					/>
+				</View>
+			</ScrollView>
 		</Container>
 	);
 };
