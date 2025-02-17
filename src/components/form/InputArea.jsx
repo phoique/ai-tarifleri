@@ -1,5 +1,5 @@
-import { TextInput, View, Text } from 'react-native';
 import classNames from 'classnames';
+import { Text, TextInput, View } from 'react-native';
 
 const InputArea = ({
 	name,
@@ -33,7 +33,7 @@ const InputArea = ({
 		<View>
 			<TextInput
 				className={classNames(
-					'rounded-lg border border-gray-400 px-4 py-2 font-normal text-black h-28',
+					'h-28 rounded-lg border border-gray-400 px-4 py-2 font-normal text-black',
 					{ 'border-red-600': error },
 				)}
 				onBlur={onBlur(name)}
@@ -48,7 +48,7 @@ const InputArea = ({
 			/>
 			{error && (
 				<Text
-					className={classNames('mt-2 ml-2 font-normal text-xs text-red-600', {
+					className={classNames('mt-2 ml-2 font-normal text-red-600 text-xs', {
 						[errorClassName]: errorClassName,
 					})}>
 					{error}

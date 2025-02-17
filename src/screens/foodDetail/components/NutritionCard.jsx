@@ -4,14 +4,14 @@ import Icon from '../../../components/icon';
 import { nutrientCardItems } from '../../../constants/food';
 
 const NutritionItem = ({ title, value, unit, icon }) => (
-	<View className='bg-white p-4 rounded-2xl flex-1 border border-gray-100 justify-center items-center'>
-		<View className='bg-green-50 p-2 rounded-xl w-12 h-12 items-center justify-center mb-2'>
+	<View className='flex-1 items-center justify-center rounded-2xl border border-gray-100 bg-white p-4'>
+		<View className='mb-2 h-12 w-12 items-center justify-center rounded-xl bg-green-50 p-2'>
 			<Icon name={icon} size={24} className='text-green-600' />
 		</View>
-		<Text className='text-gray-500 text-sm mb-1'>{title}</Text>
-		<Text className='text-xl font-bold text-green-600'>
+		<Text className='mb-1 text-gray-500 text-sm'>{title}</Text>
+		<Text className='font-bold text-green-600 text-xl'>
 			{value}
-			<Text className='text-sm text-gray-500'> {unit}</Text>
+			<Text className='text-gray-500 text-sm'> {unit}</Text>
 		</Text>
 	</View>
 );
@@ -21,7 +21,7 @@ const NutritionCard = ({ nutritionalValues }) => {
 
 	return (
 		<View className='gap-3'>
-			<Text className='text-lg font-bold text-gray-800'>
+			<Text className='font-bold text-gray-800 text-lg'>
 				{t('screen.foodDetail.nutritionalValue')}
 			</Text>
 			<View className='flex-row flex-wrap gap-3'>

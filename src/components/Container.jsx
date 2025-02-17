@@ -1,6 +1,6 @@
+import classNames from 'classnames';
 import { ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import classNames from 'classnames';
 
 const Container = ({ edges, children, isScrollable, className, header }) => {
 	const edge = edges || ['top'];

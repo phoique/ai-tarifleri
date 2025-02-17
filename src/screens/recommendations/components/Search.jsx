@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import Icon from '../../../components/icon';
-import Input from '../../../components/form/Input';
 import Button from '../../../components/form/Button';
+import Input from '../../../components/form/Input';
+import Icon from '../../../components/icon';
 
 const Search = ({ search, setSearch }) => {
 	const { t } = useTranslation();
@@ -16,7 +16,7 @@ const Search = ({ search, setSearch }) => {
 
 	return (
 		<>
-			<Icon name='Search' className='text-black absolute top-2 left-2' />
+			<Icon name='Search' className='absolute top-2 left-2 text-black' />
 			<Input
 				name='search'
 				placeholder={t('form.search')}

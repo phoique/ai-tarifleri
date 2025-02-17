@@ -1,9 +1,9 @@
-import { View, Text } from 'react-native';
+import { Text, View } from 'react-native';
 
 const InputLabel = ({ title, children }) => {
 	return (
 		<View>
-			<Text className='font-medium text-lg mb-3'>{title}</Text>
+			<Text className='mb-3 font-medium text-lg'>{title}</Text>
 			{children}
 		</View>
 	);

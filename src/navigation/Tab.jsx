@@ -1,19 +1,19 @@
-import React, { useMemo, useCallback } from 'react';
-import { Text, View, Platform, Pressable } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import classNames from 'classnames';
-import HomeScreen from '../screens/home/HomeScreen';
-import RecommendationsScreen from '../screens/recommendations/RecommendationsScreen';
-import MyFridgeScreen from '../screens/fridge/MyFridgeScreen';
-import SettingsScreen from '../screens/settings/SettingsScreen';
+import React, { useMemo, useCallback } from 'react';
+import { Platform, Pressable, Text, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Icon from '../components/icon';
 import { tabs } from '../constants/tab';
+import MyFridgeScreen from '../screens/fridge/MyFridgeScreen';
+import HomeScreen from '../screens/home/HomeScreen';
+import RecommendationsScreen from '../screens/recommendations/RecommendationsScreen';
+import SettingsScreen from '../screens/settings/SettingsScreen';
 
 const TabButton = React.memo(({ tab, isFocused, onPress }) => (
 	<Pressable className='flex-1 items-center justify-center' onPress={onPress}>
 		<View
-			className={classNames('p-2 rounded-xl bg-transparent', {
+			className={classNames('rounded-xl bg-transparent p-2', {
 				'bg-green-50': isFocused,
 			})}>
 			<Icon
@@ -23,8 +23,8 @@ const TabButton = React.memo(({ tab, isFocused, onPress }) => (
 			/>
 		</View>
 		<Text
-			className={classNames('text-xs mt-0.5 text-gray-500', {
-				'text-green-600 font-bold': isFocused,
+			className={classNames('mt-0.5 text-gray-500 text-xs', {
+				'font-bold text-green-600': isFocused,
 			})}>
 			{tab.label}
 		</Text>
@@ -59,7 +59,7 @@ const CustomTabBar = React.memo(({ state, navigation }) => {
 
 	return (
 		<View
-			className='flex-row bg-white border-t border-gray-100'
+			className='flex-row border-gray-100 border-t bg-white'
 			style={containerStyle}>
 			{tabs.map((tab, index) => {
 				const isFocused = state.index === index;

@@ -1,9 +1,9 @@
-import { FlatList, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import { FlatList, View } from 'react-native';
 import Container from '../../components/Container';
 import Header from '../../components/Header';
-import FoodCard from './components/FoodCard';
 import foodServices from '../../services/foodServices';
+import FoodCard from './components/FoodCard';
 import FoodCardSkeleton from './components/FoodCardSkeleton';
 
 const MyFridgeScreen = () => {

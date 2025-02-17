@@ -1,8 +1,8 @@
-import React from 'react';
-import { View, Text } from 'react-native';
-import { useTranslation } from 'react-i18next';
-import Button from '../../../components/form/Button';
 import classNames from 'classnames';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { Text, View } from 'react-native';
+import Button from '../../../components/form/Button';
 
 const TypeCard = ({ title, types, value, onChange, error }) => {
 	const { t } = useTranslation();
@@ -11,7 +11,7 @@ const TypeCard = ({ title, types, value, onChange, error }) => {
 		<View className='flex'>
 			<View className='flex flex-row items-center'>
 				<Text
-					className={classNames('text-lg font-medium mb-3', {
+					className={classNames('mb-3 font-medium text-lg', {
 						'text-red-500': error,
 					})}>
 					{title}
@@ -19,7 +19,7 @@ const TypeCard = ({ title, types, value, onChange, error }) => {
 				{value && (
 					<Button
 						icon='Close'
-						className='px-0 py-0 ms-3 -top-[5px]'
+						className='-top-[5px] ms-3 px-0 py-0'
 						onPress={() => onChange('')}
 					/>
 				)}
@@ -30,7 +30,7 @@ const TypeCard = ({ title, types, value, onChange, error }) => {
 						key={type}
 						onPress={() => onChange(type)}
 						className={classNames(
-							'px-4 py-2 rounded-full border border-green-500',
+							'rounded-full border border-green-500 px-4 py-2',
 							{
 								'bg-green-50': value !== type,
 								'bg-green-200': value === type,

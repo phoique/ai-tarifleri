@@ -3,7 +3,7 @@ import Icon from './icon';
 
 const Header = ({ lastContent, title, isBack }) => {
 	return (
-		<View className='flex flex-row items-center justify-between mb-3'>
+		<View className='mb-3 flex flex-row items-center justify-between'>
 			<View className='flex-1'>
 				{isBack && (
 					<TouchableOpacity className='flex justify-center'>
@@ -12,7 +12,7 @@ const Header = ({ lastContent, title, isBack }) => {
 				)}
 			</View>
 			<View className='flex-2 items-center justify-center'>
-				<Text className='font-bold text-xl text-black'>{title}</Text>
+				<Text className='font-bold text-black text-xl'>{title}</Text>
 			</View>
 			<View className='flex-1 items-end'>{lastContent}</View>
 		</View>

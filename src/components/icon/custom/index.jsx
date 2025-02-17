@@ -12,3 +12,8 @@ export { default as Vitamin } from './Vitamin';
 export { default as Restaurant } from './Restaurant';
 export { default as Calories } from './Calories';
 export { default as Search } from './Search';
+export { default as Light } from './Light';
+export { default as Dark } from './Dark';
+export { default as System } from './System';
+export {default as Language} from './Language';
+export {default as ChevronRight} from './ChevronRight';

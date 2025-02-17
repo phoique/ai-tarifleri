@@ -1,5 +1,5 @@
-import { TouchableOpacity, ActivityIndicator } from 'react-native';
 import classNames from 'classnames';
+import { ActivityIndicator, TouchableOpacity } from 'react-native';
 import Icon from '../icon';
 
 const Button = ({
@@ -23,7 +23,7 @@ const Button = ({
 				<Icon
 					name={icon}
 					size={20}
-					className={classNames('text-black mr-2', {
+					className={classNames('mr-2 text-black', {
 						'text-gray-400': isLoading || isDisable,
 					})}
 				/>

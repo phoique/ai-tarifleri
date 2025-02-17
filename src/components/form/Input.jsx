@@ -1,5 +1,5 @@
-import { TextInput, View, Text } from 'react-native';
 import classNames from 'classnames';
+import { Text, TextInput, View } from 'react-native';
 
 const Input = ({
 	name,
@@ -58,7 +58,7 @@ const Input = ({
 			/>
 			{error && (
 				<Text
-					className={classNames('mt-2 ml-2 font-normal text-xs text-red-600', {
+					className={classNames('mt-2 ml-2 font-normal text-red-600 text-xs', {
 						[errorClassName]: errorClassName,
 					})}>
 					{error}

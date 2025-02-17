@@ -48,6 +48,17 @@
 				"title": "Sonuç Bulunamadı",
 				"description": "Aradığınız kriterlere uygun tarif bulunamadı."
 			}
+		},
+		"settings": {
+			"title": "Ayarlar",
+			"theme": {
+				"title": "Tema",
+				"light": "Açık",
+				"dark": "Koyu",
+				"system": "Sistem"
+			},
+			"language": "Dil",
+			"version": "Uygulama Sürümü"
 		}
 	},
 	"form": {
@@ -64,5 +75,9 @@
 
 			"userRoleContent": "{{mealType}} türünde bir yemek istiyorum. Dikkat etmen gerekenler:\n- **Besin türü:** {{nutrientType}}\n- **Diyet türü:** {{dietaryType}}\n- **Alerji:** {{allergy}}\n- **Diğer:** {{other}}"
 		}
+	},
+	"language": {
+		"tr": "Türkçe",
+		"en": "English"
 	}
 }

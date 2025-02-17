@@ -1,11 +1,11 @@
-import { useTranslation } from 'react-i18next';
 import { useFormikContext } from 'formik';
-import TypeCard from './TypeCard';
+import { useTranslation } from 'react-i18next';
 import {
-	mealTypes,
 	dietaryTypes,
+	mealTypes,
 	nutrientTypes,
 } from '../../../constants/food';
+import TypeCard from './TypeCard';
 
 const TypeGroup = () => {
 	const { t } = useTranslation();

@@ -1,17 +1,17 @@
-import { View, Text } from 'react-native';
-import { useTranslation } from 'react-i18next';
-import { Formik } from 'formik';
 import { useNavigation } from '@react-navigation/native';
+import { Formik } from 'formik';
+import { useTranslation } from 'react-i18next';
+import { Text, View } from 'react-native';
 import Container from '../../components/Container';
 import Header from '../../components/Header';
 import Button from '../../components/form/Button';
 import Input from '../../components/form/Input';
-import InputLabel from '../../components/form/InputLabel';
 import InputArea from '../../components/form/InputArea';
-import { foodCreateSchema } from '../../validations/food';
-import TypeGroup from './components/TypeGroup';
+import InputLabel from '../../components/form/InputLabel';
 import useFoodRecommendation from '../../hooks/useFoodRecommendation';
 import { setFoodRecommendation } from '../../services/storage';
+import { foodCreateSchema } from '../../validations/food';
+import TypeGroup from './components/TypeGroup';
 
 const HomeScreen = () => {
 	const { t } = useTranslation();
@@ -69,12 +69,12 @@ const HomeScreen = () => {
 							</InputLabel>
 						</View>
 						<Button
-							className='bg-blue-500 rounded-2xl mt-4'
+							className='mt-4 rounded-2xl bg-blue-500'
 							isDisable={!formik.isValid && !!formik.submitCount}
 							onPress={formik.handleSubmit}
 							isLoading={foodRecommendation.isLoading}>
 							<View className='flex flex-1'>
-								<Text className='text-white text-center text-base font-bold'>
+								<Text className='text-center font-bold text-base text-white'>
 									{t('form.button.recommend')}
 								</Text>
 							</View>

@@ -1,14 +1,14 @@
-import React from 'react';
-import { FlatList } from 'react-native';
-import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { FlatList } from 'react-native';
 import Container from '../../components/Container';
 import Header from '../../components/Header';
 import { getFoodRecommendations } from '../../services/storage';
-import RecommendationsNotFound from './components/RecommendationsNotFound';
-import RecommendationCard from './components/RecommendationCard';
-import Search from './components/Search';
 import { searchInData } from '../../utils/data';
+import RecommendationCard from './components/RecommendationCard';
+import RecommendationsNotFound from './components/RecommendationsNotFound';
+import Search from './components/Search';
 
 const RecommendationsScreen = () => {
 	const { t } = useTranslation();
