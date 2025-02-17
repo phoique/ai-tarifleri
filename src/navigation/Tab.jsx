@@ -14,17 +14,19 @@ const TabButton = React.memo(({ tab, isFocused, onPress }) => (
 	<Pressable className='flex-1 items-center justify-center' onPress={onPress}>
 		<View
 			className={classNames('rounded-xl bg-transparent p-2', {
-				'bg-green-50': isFocused,
+				'bg-green-50 dark:bg-green-950': isFocused,
 			})}>
 			<Icon
 				name={tab.icon}
 				size={24}
-				className={classNames('text-gray-400', { 'text-green-600': isFocused })}
+				className={classNames('text-gray-400 dark:text-gray-500', {
+					'text-green-600 dark:text-green-400': isFocused,
+				})}
 			/>
 		</View>
 		<Text
-			className={classNames('mt-0.5 text-gray-500 text-xs', {
-				'font-bold text-green-600': isFocused,
+			className={classNames('mt-0.5 text-gray-500 text-xs dark:text-gray-400', {
+				'font-bold text-green-600 dark:text-green-400': isFocused,
 			})}>
 			{tab.label}
 		</Text>
@@ -59,7 +61,7 @@ const CustomTabBar = React.memo(({ state, navigation }) => {
 
 	return (
 		<View
-			className='flex-row border-gray-100 border-t bg-white'
+			className='flex-row border-gray-100 border-t bg-white dark:border-gray-800 dark:bg-gray-900'
 			style={containerStyle}>
 			{tabs.map((tab, index) => {
 				const isFocused = state.index === index;

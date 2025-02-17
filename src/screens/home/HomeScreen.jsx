@@ -73,7 +73,7 @@ const HomeScreen = () => {
 							isDisable={!formik.isValid && !!formik.submitCount}
 							onPress={formik.handleSubmit}
 							isLoading={foodRecommendation.isLoading}>
-							<View className='flex flex-1'>
+							<View className='flex flex-1 py-1'>
 								<Text className='text-center font-bold text-base text-white'>
 									{t('form.button.recommend')}
 								</Text>

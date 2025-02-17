@@ -7,6 +7,7 @@ function Close(props) {
 			height='48px'
 			viewBox='0 -960 960 960'
 			width='48px'
+			fill='currentColor'
 			{...props}>
 			<Path d='M249-207l-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231z' />
 		</Svg>

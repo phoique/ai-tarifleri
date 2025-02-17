@@ -7,6 +7,7 @@ function Back(props) {
 			height='48px'
 			viewBox='0 -960 960 960'
 			width='48px'
+			fill='currentColor'
 			{...props}>
 			<Path d='M274-450l248 248-42 42-320-320 320-320 42 42-248 248h526v60H274z' />
 		</Svg>

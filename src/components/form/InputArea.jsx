@@ -33,7 +33,7 @@ const InputArea = ({
 		<View>
 			<TextInput
 				className={classNames(
-					'h-28 rounded-lg border border-gray-400 px-4 py-2 font-normal text-black',
+					'h-28 rounded-lg border border-gray-400 px-4 py-2 font-normal text-black dark:text-white',
 					{ 'border-red-600': error },
 				)}
 				onBlur={onBlur(name)}

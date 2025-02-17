@@ -14,10 +14,10 @@ const RecommendationsNotFound = () => {
 	return (
 		<View className='flex-1 items-center justify-center p-4'>
 			<View className='items-center gap-4'>
-				<Text className='font-bold text-gray-800 text-xl'>
+				<Text className='font-bold text-gray-800 text-xl dark:text-white'>
 					{t('screen.recommendations.notFound.title')}
 				</Text>
-				<Text className='text-center font-normal text-gray-600'>
+				<Text className='text-center font-normal text-gray-600 dark:text-gray-300'>
 					{t('screen.recommendations.notFound.description')}
 				</Text>
 				<Button

@@ -7,6 +7,7 @@ function ChevronRight(props) {
 			height='48px'
 			viewBox='0 -960 960 960'
 			width='48px'
+			fill='currentColor'
 			{...props}>
 			<Path d='M530-481L332-679l43-43 241 241-241 241-43-43 198-198z' />
 		</Svg>

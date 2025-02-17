@@ -12,7 +12,9 @@ const Header = ({ lastContent, title, isBack }) => {
 				)}
 			</View>
 			<View className='flex-2 items-center justify-center'>
-				<Text className='font-bold text-black text-xl'>{title}</Text>
+				<Text className='font-bold text-black text-xl dark:text-white'>
+					{title}
+				</Text>
 			</View>
 			<View className='flex-1 items-end'>{lastContent}</View>
 		</View>

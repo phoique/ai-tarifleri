@@ -23,7 +23,7 @@ const Button = ({
 				<Icon
 					name={icon}
 					size={20}
-					className={classNames('mr-2 text-black', {
+					className={classNames('mr-2 text-black dark:text-white', {
 						'text-gray-400': isLoading || isDisable,
 					})}
 				/>

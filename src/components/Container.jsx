@@ -8,7 +8,9 @@ const Container = ({ edges, children, isScrollable, className, header }) => {
 		return (
 			<SafeAreaView
 				edges={edge}
-				className={classNames('flex-1 bg-white px-4', [className])}>
+				className={classNames('flex-1 bg-white px-4 dark:bg-gray-900', [
+					className,
+				])}>
 				{header}
 				<ScrollView showsVerticalScrollIndicator={false}>{children}</ScrollView>
 			</SafeAreaView>
@@ -18,7 +20,9 @@ const Container = ({ edges, children, isScrollable, className, header }) => {
 	return (
 		<SafeAreaView
 			edges={edge}
-			className={classNames('flex-1 bg-white px-4', [className])}>
+			className={classNames('flex-1 bg-white px-4 dark:bg-gray-900 ', [
+				className,
+			])}>
 			{header}
 			{children}
 		</SafeAreaView>

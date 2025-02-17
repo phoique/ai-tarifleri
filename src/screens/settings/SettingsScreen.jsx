@@ -40,10 +40,10 @@ const SettingsScreen = () => {
 				/>
 				<View className='flex-1 justify-end font-normal'>
 					<View className='flex items-center gap-1'>
-						<Text className='text-gray-400 text-sm'>
+						<Text className='text-gray-400 text-sm dark:text-gray-300'>
 							{t('screen.settings.version')}
 						</Text>
-						<Text className='font-medium text-gray-600 text-sm'>
+						<Text className='font-medium text-gray-600 text-sm dark:text-gray-500'>
 							{Constants.expoConfig.version}
 						</Text>
 					</View>

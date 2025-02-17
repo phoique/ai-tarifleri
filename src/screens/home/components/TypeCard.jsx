@@ -11,9 +11,10 @@ const TypeCard = ({ title, types, value, onChange, error }) => {
 		<View className='flex'>
 			<View className='flex flex-row items-center'>
 				<Text
-					className={classNames('mb-3 font-medium text-lg', {
-						'text-red-500': error,
-					})}>
+					className={classNames(
+						'mb-3 font-medium text-black text-lg dark:text-white',
+						{ '!text-red-500': error },
+					)}>
 					{title}
 				</Text>
 				{value && (
@@ -32,11 +33,11 @@ const TypeCard = ({ title, types, value, onChange, error }) => {
 						className={classNames(
 							'rounded-full border border-green-500 px-4 py-2',
 							{
-								'bg-green-50': value !== type,
-								'bg-green-200': value === type,
+								'bg-green-50 dark:bg-green-100': value !== type,
+								'bg-green-200 dark:bg-green-400': value === type,
 							},
 						)}>
-						<Text className='text-green-800 text-sm'>
+						<Text className='text-green-800 text-sm dark:text-green-900'>
 							{t(`screen.home.type.${type}`)}
 						</Text>
 					</Button>
