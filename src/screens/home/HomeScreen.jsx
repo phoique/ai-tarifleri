@@ -1,7 +1,7 @@
+import { Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Formik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { Text, View } from 'react-native';
 import Container from '../../components/Container';
 import Header from '../../components/Header';
 import Button from '../../components/form/Button';
@@ -35,7 +35,7 @@ const HomeScreen = () => {
 					const response =
 						await foodRecommendation.createFoodRecommendation(values);
 
-					setFoodRecommendation(response.id, {
+					setFoodRecommendation({
 						...JSON.parse(response.choices?.[0]?.message?.content),
 						id: response.id,
 					});

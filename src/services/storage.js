@@ -6,7 +6,7 @@ const storage = new MMKV({
 });
 
 /**
- * @description get saved food recommendation from storage
+ * @description get all food recommendations from storage
  * @returns {Array}
  */
 export const getFoodRecommendations = () => {
@@ -15,11 +15,23 @@ export const getFoodRecommendations = () => {
 		const parsed = JSON.parse(foodRecommendation);
 		return Object.values(parsed);
 	}
+	return [];
+};
+
+/**
+ * @description get all food recommendation entries from storage
+ * @returns {object}
+ */
+export const getFoodRecommendationEntries = () => {
+	const foodRecommendation = storage.getString('foodRecommendation');
+	if (foodRecommendation) {
+		return JSON.parse(foodRecommendation);
+	}
 	return {};
 };
 
 /**
- * @description get saved food recommendation by id from storage
+ * @description get food recommendation by id from storage
  * @param {string} id
  * @returns {object | null}
  */
@@ -27,8 +39,9 @@ export const getFoodRecommendation = (id) => {
 	if (!id) {
 		return null;
 	}
-	const foodRecommendation = getFoodRecommendations();
-	return foodRecommendation[id];
+	const foodRecommendation = getFoodRecommendationEntries();
+	console.log(foodRecommendation);
+	return foodRecommendation[id] || null;
 };
 
 /**
@@ -37,12 +50,12 @@ export const getFoodRecommendation = (id) => {
  * @param {object} food
  * @returns {void}
  */
-export const setFoodRecommendation = (id, food) => {
-	if (!id || !food) {
+export const setFoodRecommendation = (food) => {
+	if (!food) {
 		return;
 	}
-	const foodRecommendation = getFoodRecommendations();
-	foodRecommendation[id] = food;
+	const foodRecommendation = getFoodRecommendationEntries();
+	foodRecommendation[food.id] = food;
 	storage.set('foodRecommendation', JSON.stringify(foodRecommendation));
 };
 

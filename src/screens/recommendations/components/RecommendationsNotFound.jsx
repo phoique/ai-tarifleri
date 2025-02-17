@@ -1,6 +1,6 @@
+import { Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
-import { Text, View } from 'react-native';
 import Button from '../../../components/form/Button';
 
 const RecommendationsNotFound = () => {
@@ -15,7 +15,7 @@ const RecommendationsNotFound = () => {
 		<View className='flex-1 items-center justify-center p-4'>
 			<View className='items-center gap-4'>
 				<Text className='font-bold text-gray-800 text-xl dark:text-white'>
-					{t('screen.recommendations.notFound.title')}
+					{t('notFound')}
 				</Text>
 				<Text className='text-center font-normal text-gray-600 dark:text-gray-300'>
 					{t('screen.recommendations.notFound.description')}
