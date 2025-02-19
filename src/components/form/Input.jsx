@@ -42,9 +42,17 @@ const Input = ({
 		<View>
 			<TextInput
 				className={classNames(
-					'rounded-lg border border-gray-400 px-4 py-2 font-normal text-black dark:text-white',
-					{ 'border-red-600': error, [props.className]: props.className },
+					'h-12 rounded-xl border bg-gray-50 px-4 font-normal',
+					'border-gray-200 text-gray-900',
+					'dark:border-gray-700 dark:bg-gray-800 dark:text-white',
+					'focus:border-blue-500 dark:focus:border-blue-400',
+					{
+						'border-red-500 dark:border-red-500': error,
+						'bg-gray-100 dark:bg-gray-900': !editable,
+						[props.className]: props.className,
+					},
 				)}
+				placeholderTextColor={props.theme === 'dark' ? '#9ca3af' : '#6b7280'}
 				onBlur={handleOnBlur}
 				secureTextEntry={secureTextEntry}
 				placeholder={placeholder}
@@ -57,10 +65,7 @@ const Input = ({
 				numberOfLines={numberOfLines}
 			/>
 			{error && (
-				<Text
-					className={classNames('mt-2 ml-2 font-normal text-red-600 text-xs', {
-						[errorClassName]: errorClassName,
-					})}>
+				<Text className='mt-1.5 ml-1 font-normal text-red-500 text-xs'>
 					{error}
 				</Text>
 			)}

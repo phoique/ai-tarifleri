@@ -6,7 +6,7 @@ const InputArea = ({
 	placeholder,
 	value,
 	onChange,
-	editable,
+	editable = true,
 	onBlur,
 	numberOfLines = 4,
 	error,
@@ -33,8 +33,14 @@ const InputArea = ({
 		<View>
 			<TextInput
 				className={classNames(
-					'h-28 rounded-lg border border-gray-400 px-4 py-2 font-normal text-black dark:text-white',
-					{ 'border-red-600': error },
+					'min-h-28 rounded-xl border bg-gray-50 p-4 font-normal',
+					'border-gray-200 text-gray-900',
+					'dark:border-gray-700 dark:bg-gray-800 dark:text-white',
+					'focus:border-blue-500 dark:focus:border-blue-400',
+					{
+						'border-red-500 dark:border-red-500': error,
+						'bg-gray-100 dark:bg-gray-900': !editable,
+					},
 				)}
 				onBlur={onBlur(name)}
 				placeholder={placeholder}
@@ -44,13 +50,11 @@ const InputArea = ({
 				onFocus={handleFocus}
 				multiline={true}
 				numberOfLines={numberOfLines}
+				placeholderTextColor={props.theme === 'dark' ? '#9ca3af' : '#6b7280'}
 				{...props}
 			/>
 			{error && (
-				<Text
-					className={classNames('mt-2 ml-2 font-normal text-red-600 text-xs', {
-						[errorClassName]: errorClassName,
-					})}>
+				<Text className='mt-1.5 ml-1 font-normal text-red-500 text-xs'>
 					{error}
 				</Text>
 			)}

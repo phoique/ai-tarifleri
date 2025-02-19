@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { ScrollView } from 'react-native';
+import { ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Container = ({ edges, children, isScrollable, className, header }) => {
@@ -12,7 +12,13 @@ const Container = ({ edges, children, isScrollable, className, header }) => {
 					className,
 				])}>
 				{header}
-				<ScrollView showsVerticalScrollIndicator={false}>{children}</ScrollView>
+				<KeyboardAvoidingView
+					behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+					className='flex-1'>
+					<ScrollView showsVerticalScrollIndicator={false}>
+						{children}
+					</ScrollView>
+				</KeyboardAvoidingView>
 			</SafeAreaView>
 		);
 	}
@@ -24,7 +30,11 @@ const Container = ({ edges, children, isScrollable, className, header }) => {
 				className,
 			])}>
 			{header}
-			{children}
+			<KeyboardAvoidingView
+				behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+				className='flex-1'>
+				{children}
+			</KeyboardAvoidingView>
 		</SafeAreaView>
 	);
 };

@@ -40,7 +40,6 @@ export const getFoodRecommendation = (id) => {
 		return null;
 	}
 	const foodRecommendation = getFoodRecommendationEntries();
-	console.log(foodRecommendation);
 	return foodRecommendation[id] || null;
 };
 

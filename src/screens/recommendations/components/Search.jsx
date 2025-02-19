@@ -16,10 +16,7 @@ const Search = ({ search, setSearch }) => {
 
 	return (
 		<>
-			<Icon
-				name='Search'
-				className='absolute top-2 left-2 text-black dark:text-white'
-			/>
+			<Icon name='Search' className='absolute top-3 left-2 z-10 text-black' />
 			<Input
 				name='search'
 				placeholder={t('form.search')}
@@ -27,11 +24,13 @@ const Search = ({ search, setSearch }) => {
 				onChange={handleSearch}
 				className='px-8'
 			/>
-			<Button
-				className='absolute top-2 right-2 px-0 py-0'
-				onPress={handleClear}>
-				<Icon name='Close' className='text-black dark:text-white' />
-			</Button>
+			{search && (
+				<Button
+					className='absolute top-3 right-2 px-0 py-0'
+					onPress={handleClear}>
+					<Icon name='Close' className='text-black dark:text-white' />
+				</Button>
+			)}
 		</>
 	);
 };
