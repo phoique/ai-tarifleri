@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Linking, Text, View } from 'react-native';
 import Container from '../../components/Container';
 import Header from '../../components/Header';
-import SettingButton from './components/SettingButton';
+import SettingButton from '../../features/settings/components/SettingButton';
 
 const SettingsScreen = () => {
 	const { t, i18n } = useTranslation();

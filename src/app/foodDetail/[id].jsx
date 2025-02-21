@@ -1,19 +1,19 @@
-import { useRoute } from '@react-navigation/native';
-import { useTranslation } from 'react-i18next';
 import { ScrollView, Text, View } from 'react-native';
+import { useTranslation } from 'react-i18next';
+import { useLocalSearchParams } from 'expo-router';
 import Container from '../../components/Container';
 import Header from '../../components/Header';
 import Icon from '../../components/icon';
 import { getFoodRecommendation } from '../../services/storage';
-import NutritionCard from './components/NutritionCard';
-import PreparationCard from './components/PreparationCard';
-import VitaminAndMineralCard from './components/VitaminAndMineralCard';
+import NutritionCard from '../../features/foodDetail//components/NutritionCard';
+import PreparationCard from '../../features/foodDetail//components/PreparationCard';
+import VitaminAndMineralCard from '../../features/foodDetail//components/VitaminAndMineralCard';
 
 const FoodDetailScreen = () => {
 	const { t } = useTranslation();
-	const params = useRoute();
+	const { id } = useLocalSearchParams();
 
-	const food = getFoodRecommendation(params?.params?.id);
+	const food = getFoodRecommendation(id);
 
 	if (!food) {
 		return (

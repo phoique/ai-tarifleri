@@ -1,14 +1,14 @@
 import { Text, View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
+import { useRouter } from 'expo-router';
 import Button from '../../../components/form/Button';
 
 const RecommendationsNotFound = () => {
 	const { t } = useTranslation();
-	const navigation = useNavigation();
+	const router = useRouter();
 
 	const handleNavigateHome = () => {
-		navigation.navigate('home');
+		router.replace('/(tabs)');
 	};
 
 	return (

@@ -1,5 +1,5 @@
 import { Text, View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useRouter } from 'expo-router';
 import { Formik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import Container from '../../components/Container';
@@ -11,11 +11,11 @@ import InputLabel from '../../components/form/InputLabel';
 import useFoodRecommendation from '../../hooks/useFoodRecommendation';
 import { setFoodRecommendation } from '../../services/storage';
 import { foodCreateSchema } from '../../validations/food';
-import TypeGroup from './components/TypeGroup';
+import TypeGroup from '../../features/home/components/TypeGroup';
 
 const HomeScreen = () => {
 	const { t } = useTranslation();
-	const navigation = useNavigation();
+	const router = useRouter();
 	const foodRecommendation = useFoodRecommendation();
 
 	return (
@@ -39,7 +39,7 @@ const HomeScreen = () => {
 						...JSON.parse(response.choices?.[0]?.message?.content),
 						id: response.id,
 					});
-					navigation.navigate('foodDetail', { id: response.id });
+					router.navigate(`/foodDetail/${response.id}`);
 				}}>
 				{(formik) => (
 					<View className='flex flex-1'>

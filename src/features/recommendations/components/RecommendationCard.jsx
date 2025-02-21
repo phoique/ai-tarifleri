@@ -1,12 +1,12 @@
 import { Text, TouchableOpacity, View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useRouter } from 'expo-router';
 import Icon from '../../../components/icon';
 
 const RecommendationCard = ({ food }) => {
-	const navigation = useNavigation();
+	const router = useRouter();
 
 	const foodDetailRedirect = () => {
-		navigation.navigate('foodDetail', { id: food.id });
+		router.navigate(`/foodDetail/${food.id}`);
 	};
 
 	return (

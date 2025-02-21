@@ -1,7 +1,7 @@
 import i18n from '../translations';
 
 export const tabs = [
-	{ name: 'home', icon: 'Home', label: i18n.t('navigation.home') },
+	{ name: 'index', icon: 'Home', label: i18n.t('navigation.home') },
 	{
 		name: 'recommendations',
 		icon: 'Food',

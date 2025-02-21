@@ -27,6 +27,7 @@
 			"favicon": "./assets/favicon.png",
 			"bundler": "metro"
 		},
+		"scheme": "ai-tarifleri",
 		"plugins": [
 			"expo-localization",
 			[
@@ -41,7 +42,8 @@
 						"./assets/fonts/Poppins-Italic.ttf"
 					]
 				}
-			]
+			],
+			"expo-router"
 		]
 	}
 }

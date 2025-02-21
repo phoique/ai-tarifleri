@@ -6,9 +6,9 @@ import Container from '../../components/Container';
 import Header from '../../components/Header';
 import { getFoodRecommendations } from '../../services/storage';
 import { searchInData } from '../../utils/data';
-import RecommendationCard from './components/RecommendationCard';
-import RecommendationsNotFound from './components/RecommendationsNotFound';
-import Search from './components/Search';
+import RecommendationCard from '../../features/recommendations/components/RecommendationCard';
+import RecommendationsNotFound from '../../features/recommendations/components/RecommendationsNotFound';
+import Search from '../../features/recommendations/components/Search';
 
 const RecommendationsScreen = () => {
 	const { t } = useTranslation();

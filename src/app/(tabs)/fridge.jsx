@@ -3,8 +3,8 @@ import { FlatList, View } from 'react-native';
 import Container from '../../components/Container';
 import Header from '../../components/Header';
 import foodServices from '../../services/foodServices';
-import FoodCard from './components/FoodCard';
-import FoodCardSkeleton from './components/FoodCardSkeleton';
+import FoodCard from '../../features/fridge/components/FoodCard';
+import FoodCardSkeleton from '../../features/fridge/components/FoodCardSkeleton';
 
 const MyFridgeScreen = () => {
 	const { t } = useTranslation();
