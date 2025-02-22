@@ -17,3 +17,4 @@ export { default as Dark } from './Dark';
 export { default as System } from './System';
 export {default as Language} from './Language';
 export {default as ChevronRight} from './ChevronRight';
+export {default as ErrorIcon} from './ErrorIcon';

@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import { setStringAsync } from 'expo-clipboard';
 import Container from '../components/Container';
 import Button from '../components/form/Button';
+import Icon from '../components/icon';
 
 const ErrorScreen = ({ error, resetErrorBoundary }) => {
 	const { t } = useTranslation();
@@ -26,6 +27,7 @@ const ErrorScreen = ({ error, resetErrorBoundary }) => {
 		<Container isScrollable={false} edges={['top', 'bottom', 'left', 'right']}>
 			<View className='flex-1 items-center justify-center p-4'>
 				<View className='items-center gap-4'>
+					<Icon name='ErrorIcon' size={64} className='text-red-600' />
 					<Text className='font-bold text-gray-800 text-xl dark:text-white'>
 						{t('screen.error.title')}
 					</Text>
