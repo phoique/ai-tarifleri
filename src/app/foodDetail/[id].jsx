@@ -16,15 +16,7 @@ const FoodDetailScreen = () => {
 	const food = getFoodRecommendation(id);
 
 	if (!food) {
-		return (
-			<Container isScrollable={false}>
-				<View className='flex-1 items-center justify-center'>
-					<Text className='font-normal text-gray-600 text-lg dark:text-gray-400'>
-						{t('notFound')}
-					</Text>
-				</View>
-			</Container>
-		);
+		throw new Error('No food found for the given id');
 	}
 
 	return (

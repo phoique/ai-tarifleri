@@ -59,6 +59,16 @@
 			},
 			"language": "Dil",
 			"version": "Uygulama Sürümü"
+		},
+		"notFound": {
+			"title": "Sayfa Bulunamadı",
+			"description": "Aradığınız sayfa mevcut değil veya kaldırılmış olabilir!",
+			"backToHome": "Ana Sayfaya Dön"
+		},
+		"error": {
+			"title": "Bir Hata Oluştu",
+			"description": "İşleminiz gerçekleştirilirken bir hata oluştu. Lütfen tekrar deneyin.",
+			"reset": "Sayfayı Yenile"
 		}
 	},
 	"form": {
@@ -66,7 +76,8 @@
 		"otherInfo": "Diğer bilgiler",
 		"search": "Arama yapın...",
 		"button": {
-			"recommend": "Öneri Al"
+			"recommend": "Öneri Al",
+			"copyError": "Hatayı kopyala"
 		}
 	},
 	"hook": {
