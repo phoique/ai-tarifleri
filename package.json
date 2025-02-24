@@ -4,8 +4,9 @@
 	"main": "expo-router/entry",
 	"scripts": {
 		"start": "expo start",
-		"android": "expo run:android",
-		"ios": "expo run:ios",
+		"prebuild": "expo prebuild",
+		"android": "npm run prebuild && expo run:android",
+		"ios": "npm run prebuild && expo run:ios",
 		"web": "expo start --web",
 		"pod": "cd ios && pod install && cd ..",
 		"apk": "cd android && ./gradlew assembleRelease && cd ..",
