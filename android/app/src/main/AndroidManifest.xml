@@ -24,8 +24,8 @@
         <action android:name="android.intent.action.VIEW"/>
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
-        <data android:scheme="com.phoique.aitarifleri"/>
         <data android:scheme="ai-tarifleri"/>
+        <data android:scheme="com.phoique.aitarifleri"/>
       </intent-filter>
     </activity>
   </application>

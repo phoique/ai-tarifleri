@@ -4,21 +4,19 @@
 		"slug": "ai-tarifleri",
 		"version": "1.0.0",
 		"orientation": "portrait",
-		"icon": "./assets/icon.png",
-		"userInterfaceStyle": "light",
 		"newArchEnabled": true,
-		"splash": {
-			"image": "./assets/splash-icon.png",
-			"resizeMode": "contain",
-			"backgroundColor": "#ffffff"
-		},
 		"ios": {
 			"supportsTablet": true,
-			"bundleIdentifier": "com.phoique.aitarifleri"
+			"bundleIdentifier": "com.phoique.aitarifleri",
+			"icon": {
+				"dark": "./assets/icons/ios-dark.png",
+				"light": "./assets/icons/ios-light.png",
+				"tinted": "./assets/icons/ios-tinted.png"
+			}
 		},
 		"android": {
 			"adaptiveIcon": {
-				"foregroundImage": "./assets/adaptive-icon.png",
+				"foregroundImage": "./assets/icons/adaptive-icon.png",
 				"backgroundColor": "#ffffff"
 			},
 			"package": "com.phoique.aitarifleri"
@@ -43,7 +41,19 @@
 					]
 				}
 			],
-			"expo-router"
+			"expo-router",
+			[
+				"expo-splash-screen",
+				{
+					"backgroundColor": "#ffffff",
+					"image": "./assets/icons/splash-icon-light.png",
+					"dark": {
+						"image": "./assets/icons/splash-icon-dark.png",
+						"backgroundColor": "#000000"
+					},
+					"imageWidth": 200
+				}
+			]
 		]
 	}
 }
