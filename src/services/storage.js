@@ -65,3 +65,40 @@ export const setFoodRecommendation = (food) => {
 export const clearFoodRecommendation = () => {
 	storage.delete('foodRecommendation');
 };
+
+/**
+ * @description get all fridge items from storage
+ * @returns {Array}
+ */
+export const getFridgeItems = () => {
+	const fridgeItems = storage.getString('fridgeItems');
+	if (fridgeItems) {
+		const parsed = JSON.parse(fridgeItems);
+		return parsed;
+	}
+	return [];
+};
+
+/**
+ * @description set fridge items to storage
+ * @param {string} itemId
+ * @returns {void}
+ */
+export const setFridgeItem = (itemId) => {
+	const fridgeItems = getFridgeItems();
+	if (!fridgeItems.includes(itemId)) {
+		fridgeItems.push(itemId);
+	}
+	storage.set('fridgeItems', JSON.stringify(fridgeItems));
+};
+
+/**
+ * @description remove fridge item from storage
+ * @param {string} itemId
+ * @returns {void}
+ */
+export const removeFridgeItem = (itemId) => {
+	const fridgeItems = getFridgeItems();
+	const newFridgeItems = fridgeItems.filter((item) => item !== itemId);
+	storage.set('fridgeItems', JSON.stringify(newFridgeItems));
+};
