@@ -1,8 +1,11 @@
 import React from 'react';
 import { FlatList, Text, View } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import ProductItem from './ProductItem';
 
 const FoodCategoryCard = ({ category, products }) => {
+	const { t } = useTranslation();
+
 	const keyExtractor = React.useCallback(
 		(item) => `${category}-${item.name}`,
 		[category],
@@ -19,7 +22,7 @@ const FoodCategoryCard = ({ category, products }) => {
 		<View className='flex'>
 			<View className='flex flex-row items-center'>
 				<Text className='mb-3 font-bold text-lg dark:text-white'>
-					{category}
+					{t(`fridge.categories.${category}`)}
 				</Text>
 			</View>
 			<FlatList

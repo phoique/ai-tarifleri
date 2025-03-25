@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 import Button from '../../../components/form/Button';
 import {
@@ -9,6 +10,7 @@ import {
 } from '../../../services/storage';
 
 const ProductItem = ({ id, name, image }) => {
+	const { t } = useTranslation();
 	const isFoodIcludes = getFridgeItems().includes(id);
 
 	const [isFoodAvailable, setIsFoodAvailable] = React.useState(isFoodIcludes);
@@ -23,6 +25,8 @@ const ProductItem = ({ id, name, image }) => {
 			return true;
 		});
 	};
+
+	const itemName = t(`fridge.items.${name}`);
 	return (
 		<Button className='mb-5 px-0 py-0 pr-5' onPress={handlePress}>
 			<View className='flex flex-col items-center'>
@@ -41,7 +45,7 @@ const ProductItem = ({ id, name, image }) => {
 					) : (
 						<View className='flex h-24 w-24 items-center justify-center rounded-2xl bg-gray-300 dark:bg-gray-700'>
 							<Text className='text-center font-normal text-gray-500 dark:text-gray-500'>
-								{name}
+								{itemName}
 							</Text>
 						</View>
 					)}
@@ -53,7 +57,7 @@ const ProductItem = ({ id, name, image }) => {
 							'text-green-600 dark:text-green-400': isFoodAvailable,
 						},
 					)}>
-					{name}
+					{itemName}
 				</Text>
 			</View>
 		</Button>
