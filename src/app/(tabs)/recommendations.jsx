@@ -8,7 +8,7 @@ import { getFoodRecommendations } from '../../services/storage';
 import { searchInData } from '../../utils/data';
 import RecommendationCard from '../../features/recommendations/components/RecommendationCard';
 import RecommendationsNotFound from '../../features/recommendations/components/RecommendationsNotFound';
-import Search from '../../features/recommendations/components/Search';
+import Search from '../../components/Search';
 
 const RecommendationsScreen = () => {
 	const { t } = useTranslation();
@@ -16,9 +16,9 @@ const RecommendationsScreen = () => {
 
 	const [search, setSearch] = React.useState('');
 
-	const renderItem = ({ item }) => {
+	const renderItem = React.useCallback(({ item }) => {
 		return <RecommendationCard food={item} />;
-	};
+	}, []);
 
 	const recommendationsFiltered = React.useMemo(() => {
 		if (!search || search.length < 2) {
@@ -27,14 +27,28 @@ const RecommendationsScreen = () => {
 		return searchInData(recommendations, search, ['title']);
 	}, [recommendations, search]);
 
-	const keyExtractor = (item) => item.title;
+	const keyExtractor = React.useCallback((item) => item.title, []);
+
+	const handleSearch = (_name, text) => {
+		setSearch(text);
+	};
+
+	const handleClear = () => {
+		setSearch('');
+	};
 
 	return (
 		<Container
 			isScrollable={false}
 			header={<Header title={t('screen.recommendations.title')} />}>
 			<FlatList
-				ListHeaderComponent={<Search search={search} setSearch={setSearch} />}
+				ListHeaderComponent={
+					<Search
+						search={search}
+						onChange={handleSearch}
+						onClear={handleClear}
+					/>
+				}
 				ListEmptyComponent={<RecommendationsNotFound />}
 				data={recommendationsFiltered}
 				renderItem={renderItem}
