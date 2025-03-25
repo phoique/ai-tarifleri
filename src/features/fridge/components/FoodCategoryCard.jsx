@@ -19,7 +19,7 @@ const FoodCategoryCard = ({ category, products }) => {
 	);
 
 	return (
-		<View className='flex'>
+		<View className='mb-4 flex'>
 			<View className='flex flex-row items-center'>
 				<Text className='mb-3 font-bold text-lg dark:text-white'>
 					{t(`fridge.categories.${category}`)}
@@ -36,4 +36,4 @@ const FoodCategoryCard = ({ category, products }) => {
 	);
 };
 
-export default FoodCategoryCard;
+export default React.memo(FoodCategoryCard);

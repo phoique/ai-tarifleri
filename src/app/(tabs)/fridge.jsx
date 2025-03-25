@@ -9,7 +9,6 @@ import FoodSearch from '../../features/fridge/components/FoodSearch';
 
 const MyFridgeScreen = () => {
 	const { t } = useTranslation();
-
 	const [categories, setCategories] = React.useState(fridgeCategories);
 
 	const renderItem = React.useCallback(
@@ -21,17 +20,13 @@ const MyFridgeScreen = () => {
 	const keyExtractor = React.useCallback((item) => item.id.toString(), []);
 	return (
 		<Container header={<Header title={t('screen.fridge.title')} />}>
-			<View className='flex gap-4'>
+			<View className='flex flex-1 gap-4'>
 				<FoodSearch setCategories={setCategories} />
 				<FlatList
 					data={categories}
 					renderItem={renderItem}
 					keyExtractor={keyExtractor}
 					showsVerticalScrollIndicator={false}
-					removeClippedSubviews={true}
-					maxToRenderPerBatch={5}
-					windowSize={10}
-					initialNumToRender={5}
 				/>
 			</View>
 		</Container>

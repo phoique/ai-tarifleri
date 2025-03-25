@@ -24,31 +24,29 @@ export const toLocaleNormalizeString = (text) => {
  * @param {array} key
  * @returns {Array}
  */
-export const searchInData = (data, search, key) => {
-	if (data?.length === 0 || key?.length === 0) {
+export const searchInData = (data, search, keys) => {
+	if (data?.length === 0 || keys?.length === 0) {
 		return data;
 	}
 	const response = [];
 
-	for (let dataIndex = 0; dataIndex < data.length; dataIndex += 1) {
-		const item = data[dataIndex];
-		for (let keyIndex = 0; keyIndex < key.length; keyIndex += 1) {
-			const itemValue = item[key[keyIndex]];
-
+	for (const dataItem of data) {
+		for (const key of keys) {
+			const itemValue = dataItem[key];
 			if (
 				typeof itemValue === 'string' &&
 				toLocaleNormalizeString(itemValue).includes(
 					toLocaleNormalizeString(search),
 				)
 			) {
-				response.push(item);
+				response.push(dataItem);
 				break;
 			}
 			if (
 				(typeof itemValue === 'number' || typeof itemValue === 'boolean') &&
 				itemValue === search
 			) {
-				response.push(item);
+				response.push(dataItem);
 				break;
 			}
 		}

@@ -10,47 +10,66 @@ import { searchInData } from '../../../utils/data';
 const FoodSearch = ({ setCategories }) => {
 	const { t } = useTranslation();
 	const [search, setSearch] = React.useState('');
+	const [debouncedSearch, setDebouncedSearch] = React.useState('');
 
-	const handleSearch = React.useCallback(
-		(_name, text) => {
-			setSearch(text);
-
-			if (!text || text.length < 2) {
-				setCategories(fridgeCategories);
-				return;
-			}
-
-			const filteredCategories = fridgeCategories
-				.map((category) => {
-					// Her ürünü i18n çevirisiyle birlikte yeni obje olarak hazırla
-					const productsWithTranslation = category.products.map((product) => ({
-						...product,
-						title: t(`fridge.items.${product.name}`),
-					}));
-
-					// searchInData kullanarak arama yap
-					const filteredProducts = searchInData(productsWithTranslation, text, [
-						'title',
-					]);
-
-					if (filteredProducts.length > 0) {
-						return {
-							...category,
-							products: filteredProducts.map((item) => ({
-								id: item.id,
-								name: item.name,
-								image: item.image,
-							})),
-						};
-					}
-					return null;
-				})
-				.filter(Boolean);
-
-			setCategories(filteredCategories);
-		},
-		[t, setCategories],
+	// Translate products once and memoize
+	const translatedCategories = React.useMemo(
+		() =>
+			fridgeCategories.map((category) => ({
+				...category,
+				products: category.products.map((product) => ({
+					...product,
+					title: t(`fridge.items.${product.name}`),
+				})),
+			})),
+		[t],
 	);
+
+	// Debounce search
+	React.useEffect(() => {
+		const timer = setTimeout(() => {
+			setDebouncedSearch(search);
+		}, 200);
+
+		return () => clearTimeout(timer);
+	}, [search]);
+
+	// Memoize search results
+	const filteredCategories = React.useMemo(() => {
+		if (!debouncedSearch || debouncedSearch.length < 2) {
+			return fridgeCategories;
+		}
+
+		return translatedCategories
+			.map((category) => {
+				const filteredProducts = searchInData(
+					category.products,
+					debouncedSearch,
+					['title'],
+				);
+
+				if (filteredProducts.length > 0) {
+					return {
+						...category,
+						products: filteredProducts.map(({ id, name, image }) => ({
+							id,
+							name,
+							image,
+						})),
+					};
+				}
+				return null;
+			})
+			.filter(Boolean);
+	}, [debouncedSearch, translatedCategories]);
+
+	React.useEffect(() => {
+		setCategories(filteredCategories);
+	}, [filteredCategories, setCategories]);
+
+	const handleSearch = React.useCallback((_name, text) => {
+		setSearch(text);
+	}, []);
 
 	const handleClear = React.useCallback(() => {
 		setSearch('');
@@ -81,4 +100,4 @@ const FoodSearch = ({ setCategories }) => {
 	);
 };
 
-export default FoodSearch;
+export default React.memo(FoodSearch);
