@@ -1,11 +1,30 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import openAiServices from '../services/openAiServices';
+import { getFridgeItems } from '../services/storage';
+import { fridgeCategories } from '../constants/food';
 
 const useFoodRecommendation = () => {
 	const { t } = useTranslation();
 	const [getFoodRecommendationMutation, getFoodRecommendationResponse] =
 		openAiServices.useGetFoodRecommendationMutation();
+
+	const fridgeItemsText = React.useMemo(() => {
+		const fridgeItems = getFridgeItems();
+
+		if (fridgeItems.length === 0) {
+			return '';
+		}
+
+		return fridgeItems
+			.map((itemId) => {
+				const [categoryId, productIndex] = itemId.split('-').map(Number);
+				const category = fridgeCategories.find((cat) => cat.id === categoryId);
+				const product = category?.products[productIndex - 1];
+				return product ? t(`fridge.items.${product.name}`) : '';
+			})
+			.join(', ');
+	}, [t]);
 
 	const createFoodRecommendation = React.useCallback(
 		(values) => {
@@ -31,6 +50,7 @@ const useFoodRecommendation = () => {
 									: '',
 								allergy: values.allergy,
 								other: values.other,
+								fridgeItems: fridgeItemsText,
 							}),
 						},
 					],
@@ -44,7 +64,7 @@ const useFoodRecommendation = () => {
 					});
 			});
 		},
-		[getFoodRecommendationMutation, t],
+		[getFoodRecommendationMutation, t, fridgeItemsText],
 	);
 
 	return {

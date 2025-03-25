@@ -8,6 +8,7 @@ import { getFoodRecommendation } from '../../services/storage';
 import NutritionCard from '../../features/foodDetail//components/NutritionCard';
 import PreparationCard from '../../features/foodDetail//components/PreparationCard';
 import VitaminAndMineralCard from '../../features/foodDetail//components/VitaminAndMineralCard';
+import IngredientCard from '../../features/foodDetail/components/IngredientCard';
 
 const FoodDetailScreen = () => {
 	const { t } = useTranslation();
@@ -37,6 +38,10 @@ const FoodDetailScreen = () => {
 							{food.description}
 						</Text>
 					</View>
+					<IngredientCard
+						inFridge={food.ingredients.inFridge}
+						missing={food.ingredients.missing}
+					/>
 					<NutritionCard nutritionalValues={food.nutritionalValues} />
 					<PreparationCard preparations={food.preparation} />
 					<View className='rounded-2xl bg-green-50 p-4 dark:bg-gray-800'>
